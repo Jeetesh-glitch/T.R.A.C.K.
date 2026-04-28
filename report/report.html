@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report a Cybercrime - Government Cybercrime Portal</title>
+    <link rel="stylesheet" href="report.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h2>Cybercrime Portal</h2>
+                        <span>Government of India</span>
+                    </div>
+                </div>
+                <nav class="nav-menu">
+                    <a href="../public/home.html" class="nav-link">Home</a>
+                    <a href="../advisories/advisories.html" class="nav-link">Advisories</a>
+                    <a href="../complaint/complaint status.html" class="nav-link">Complaint Status</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="report-container">
+                <div class="report-card">
+                    <div class="form-header">
+                        <h3>Report a Cybercrime Incident</h3>
+                        <p>Please provide as much detail as possible to help us investigate.</p>
+                    </div>
+
+                    <form id="reportForm" class="form">
+                        <div class="form-group">
+                            <label for="reportType"><i class="fas fa-list"></i> Type of Crime</label>
+                            <select id="reportType" name="type" required>
+                                <option value="">Select the type of cybercrime</option>
+                                <option value="fake-news">Fake News</option>
+                                <option value="abusive-content">Abusive Content</option>
+                                <option value="spam">Spam</option>
+                                <option value="harassment">Harassment</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reportTitle"><i class="fas fa-heading"></i> Title of Incident</label>
+                            <input type="text" id="reportTitle" name="title" placeholder="e.g., Fake news about election" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reportDescription"><i class="fas fa-paragraph"></i> Description</label>
+                            <textarea id="reportDescription" name="description" rows="5" placeholder="Describe the incident in detail..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reportEvidence"><i class="fas fa-paperclip"></i> Evidence (optional)</label>
+                            <input type="file" id="reportEvidence" name="evidence" multiple>
+                            <small>You can upload screenshots, documents, etc.</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="socialUrl"><i class="fas fa-link"></i> URL of Incident (optional)</label>
+                            <input type="url" id="socialUrl" name="socialUrl" placeholder="e.g., https://www.facebook.com/post/123">
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Submit Report
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="message-overlay" id="messageOverlay" style="display: none;">
+        <div class="message-content">
+            <div class="message-icon success">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3 id="messageTitle">Success!</h3>
+            <p id="messageText">Your report has been submitted successfully.</p>
+            <p>Your Complaint ID is: <strong id="complaintId"></strong></p>
+            <button class="message-btn" onclick="hideMessage()">Close</button>
+        </div>
+    </div>
+
+    <script src="../js/dataManager.js"></script>
+    <script src="report.js"></script>
+</body>
+</html>

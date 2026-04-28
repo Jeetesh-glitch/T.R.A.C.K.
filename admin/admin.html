@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Police Cybercrime Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="../js/dataManager.js"></script>
+    <script src="data.js"></script>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                                    <span class="logo-text">
+                        <strong>Cyber Crime Cell</strong>
+                        <small>Government of India</small>
+                    </span>
+
+            </div>
+        </div>
+        <nav class="nav-tabs">
+            <button class="nav-tab active" data-tab="dashboard">
+                <i data-lucide="layout-dashboard"></i>
+                Dashboard
+            </button>
+            <button class="nav-tab" data-tab="complaints">
+                <i data-lucide="file-text"></i>
+                Complaints
+            </button>
+            <button class="nav-tab" data-tab="fake-news">
+                <i data-lucide="search-check"></i>
+                Fake News Detection
+            </button>
+            <button class="nav-tab" data-tab="abusive-content">
+                <i data-lucide="shield-alert"></i>
+                Abusive Content
+            </button>
+            <button class="nav-tab" data-tab="spam-control">
+                <i data-lucide="spam"></i>
+                Spam Control
+            </button>
+            <button class="nav-tab" data-tab="analytics">
+                <i data-lucide="bar-chart-3"></i>
+                Analytics
+            </button>
+            <button class="nav-tab" data-tab="case-history">
+                <i data-lucide="history"></i>
+                Case History
+            </button>
+            <button class="nav-tab" data-tab="settings">
+                <i data-lucide="settings"></i>
+                Settings
+            </button>
+        </nav>
+        <div class="header-right">
+            <div class="profile-dropdown">
+                <button class="profile-btn">
+                    <i data-lucide="user"></i>
+                    <span>Admin</span>
+                    <i data-lucide="chevron-down"></i>
+                </button>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">
+                        <i data-lucide="user"></i>
+                        Profile
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        <i data-lucide="key"></i>
+                        Change Password
+                    </a>
+                    <a href="#" class="dropdown-item logout">
+                        <i data-lucide="log-out"></i>
+                        Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Dashboard Tab -->
+        <div id="dashboard" class="tab-content active">
+            <div class="page-header">
+                <h1>Dashboard Overview</h1>
+                <p>Welcome to the Police Cybercrime Admin Panel</p>
+            </div>
+
+            <!-- Summary Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i data-lucide="mail"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Total Complaints</h3>
+                        <div class="stat-number">2,847</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon pending">
+                        <i data-lucide="clock"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Pending Complaints</h3>
+                        <div class="stat-number">156</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon resolved">
+                        <i data-lucide="check-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Resolved Complaints</h3>
+                        <div class="stat-number">2,691</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon urgent">
+                        <i data-lucide="alert-triangle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Urgent Complaints</h3>
+                        <div class="stat-number">23</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Main Content -->
+            <div class="dashboard-grid">
+                <div class="chart-section">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Complaint Breakdown</h3>
+                        </div>
+                        <div class="card-content">
+                            <canvas id="complaintChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="alerts-section">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Live Alerts</h3>
+                            <span class="badge urgent">Real-time</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="alerts-list">
+                                <div class="alert-item urgent">
+                                    <div class="alert-icon">
+                                        <i data-lucide="alert-triangle"></i>
+                                    </div>
+                                    <div class="alert-content">
+                                        <div class="alert-title">High-Priority Threat Detected</div>
+                                        <div class="alert-time">2 minutes ago</div>
+                                    </div>
+                                </div>
+                                <div class="alert-item">
+                                    <div class="alert-icon">
+                                        <i data-lucide="shield-alert"></i>
+                                    </div>
+                                    <div class="alert-content">
+                                        <div class="alert-title">Multiple Fake News Reports</div>
+                                        <div class="alert-time">15 minutes ago</div>
+                                    </div>
+                                </div>
+                                <div class="alert-item">
+                                    <div class="alert-icon">
+                                        <i data-lucide="spam"></i>
+                                    </div>
+                                    <div class="alert-content">
+                                        <div class="alert-title">Spam Bot Activity Detected</div>
+                                        <div class="alert-time">32 minutes ago</div>
+                                    </div>
+                                </div>
+                                <div class="alert-item">
+                                    <div class="alert-icon">
+                                        <i data-lucide="user-x"></i>
+                                    </div>
+                                    <div class="alert-content">
+                                        <div class="alert-title">Abusive Content Reported</div>
+                                        <div class="alert-time">1 hour ago</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Complaints Tab -->
+        <div id="complaints" class="tab-content">
+            <div class="page-header">
+                <h1>Complaint Management</h1>
+                <div class="page-actions">
+                    <button class="btn btn-primary">
+                        <i data-lucide="plus"></i>
+                        New Complaint
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters-section">
+                <div class="filters-grid">
+                    <div class="filter-group">
+                        <label for="statusFilter">Status</label>
+                        <select id="statusFilter" class="filter-select">
+                            <option value="">All Status</option>
+                            <option value="pending">Pending</option>
+                            <option value="investigating">Investigating</option>
+                            <option value="resolved">Resolved</option>
+                            <option value="dismissed">Dismissed</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="typeFilter">Type</label>
+                        <select id="typeFilter" class="filter-select">
+                            <option value="">All Types</option>
+                            <option value="fake-news">Fake News</option>
+                            <option value="abusive-content">Abusive Content</option>
+                            <option value="spam">Spam</option>
+                            <option value="harassment">Harassment</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="searchInput">Search</label>
+                        <input type="text" id="searchInput" class="filter-input" placeholder="Search complaints...">
+                    </div>
+                    <button class="btn btn-secondary" onclick="clearFilters()">
+                        <i data-lucide="x"></i>
+                        Clear
+                    </button>
+                </div>
+            </div>
+
+            <!-- Complaints Table -->
+            <div class="table-section">
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Complaint ID</th>
+                                <th>Reporter ID</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Assigned Officer</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="complaintsTableBody">
+                            <tr>
+                                <td>CC-2024-001</td>
+                                <td>REP-456789</td>
+                                <td><span class="badge type-fake-news">Fake News</span></td>
+                                <td><span class="badge status-pending">Pending</span></td>
+                                <td>2024-08-30</td>
+                                <td>Officer Singh</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon btn-view" onclick="viewComplaint('CC-2024-001')" title="View Details">
+                                            <i data-lucide="eye"></i>
+                                        </button>
+                                        <button class="btn-icon btn-verify" title="Verify">
+                                            <i data-lucide="check"></i>
+                                        </button>
+                                        <button class="btn-icon btn-escalate" title="Escalate">
+                                            <i data-lucide="alert-triangle"></i>
+                                        </button>
+                                        <button class="btn-icon btn-dismiss" title="Dismiss">
+                                            <i data-lucide="trash-2"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>CC-2024-002</td>
+                                <td>REP-123456</td>
+                                <td><span class="badge type-abusive">Abusive Content</span></td>
+                                <td><span class="badge status-investigating">Investigating</span></td>
+                                <td>2024-08-29</td>
+                                <td>Officer Patel</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon btn-view" onclick="viewComplaint('CC-2024-002')" title="View Details">
+                                            <i data-lucide="eye"></i>
+                                        </button>
+                                        <button class="btn-icon btn-verify" title="Verify">
+                                            <i data-lucide="check"></i>
+                                        </button>
+                                        <button class="btn-icon btn-escalate" title="Escalate">
+                                            <i data-lucide="alert-triangle"></i>
+                                        </button>
+                                        <button class="btn-icon btn-dismiss" title="Dismiss">
+                                            <i data-lucide="trash-2"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="urgent-row">
+                                <td>CC-2024-003</td>
+                                <td>REP-789012</td>
+                                <td><span class="badge type-harassment">Harassment</span></td>
+                                <td><span class="badge status-urgent">Urgent</span></td>
+                                <td>2024-08-31</td>
+                                <td>Officer Kumar</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon btn-view" onclick="viewComplaint('CC-2024-003')" title="View Details">
+                                            <i data-lucide="eye"></i>
+                                        </button>
+                                        <button class="btn-icon btn-verify" title="Verify">
+                                            <i data-lucide="check"></i>
+                                        </button>
+                                        <button class="btn-icon btn-escalate" title="Escalate">
+                                            <i data-lucide="alert-triangle"></i>
+                                        </button>
+                                        <button class="btn-icon btn-dismiss" title="Dismiss">
+                                            <i data-lucide="trash-2"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fake News Detection Tab -->
+        <div id="fake-news" class="tab-content">
+            <div class="page-header">
+                <h1>Fake News Detection</h1>
+                <p>AI-powered authenticity verification system</p>
+            </div>
+
+            <div class="detection-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Check Content Authenticity</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="input-section">
+                            <label for="contentInput">Paste URL or Text Content</label>
+                            <textarea id="contentInput" placeholder="Enter URL or paste text content to verify..." rows="4"></textarea>
+                            <button class="btn btn-primary check-btn" onclick="checkAuthenticity()">
+                                <i data-lucide="search"></i>
+                                Check Authenticity
+                            </button>
+                        </div>
+                        
+                        <div id="resultsSection" class="results-section hidden">
+                            <h4>Analysis Results</h4>
+                            <div class="credibility-score">
+                                <div class="score-label">Credibility Score</div>
+                                <div class="score-bar">
+                                    <div class="score-fill" id="scoreFill"></div>
+                                    <span class="score-text" id="scoreText">85%</span>
+                                </div>
+                            </div>
+                            
+                            <div class="verdict-section">
+                                <div class="verdict" id="verdict">Likely Authentic</div>
+                                <div class="confidence">Confidence: High</div>
+                            </div>
+                            
+                            <div class="references-section">
+                                <h5>Trusted References</h5>
+                                <div class="references-list">
+                                    <div class="reference-item">
+                                        <i data-lucide="check-circle"></i>
+                                        <span>NDTV - Similar report found</span>
+                                    </div>
+                                    <div class="reference-item">
+                                        <i data-lucide="check-circle"></i>
+                                        <span>PIB Fact Check - Verified</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="admin-actions">
+                                <button class="btn btn-success">
+                                    <i data-lucide="check"></i>
+                                    Mark as True
+                                </button>
+                                <button class="btn btn-danger">
+                                    <i data-lucide="x"></i>
+                                    Mark as Fake
+                                </button>
+                                <button class="btn btn-warning">
+                                    <i data-lucide="alert-triangle"></i>
+                                    Escalate
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Abusive Content Tab -->
+        <div id="abusive-content" class="tab-content">
+            <div class="page-header">
+                <h1>Abusive Content Management</h1>
+                <p>Monitor and manage reported abusive content</p>
+            </div>
+
+            <div class="content-list">
+                <div class="content-item">
+                    <div class="content-preview">
+                        <div class="content-text">
+                            "This post contains inappropriate language and threats..."
+                        </div>
+                        <div class="toxicity-score">
+                            <span class="toxicity-label">Toxicity Score:</span>
+                            <div class="toxicity-bar">
+                                <div class="toxicity-fill" style="width: 85%"></div>
+                                <span class="toxicity-text">85%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-actions">
+                        <button class="btn btn-danger">
+                            <i data-lucide="ban"></i>
+                            Block Post
+                        </button>
+                        <button class="btn btn-warning">
+                            <i data-lucide="pause"></i>
+                            Suspend User
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i data-lucide="eye"></i>
+                            Add to Watchlist
+                        </button>
+                        <button class="btn btn-primary">
+                            <i data-lucide="send"></i>
+                            Forward to Platform
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="content-item">
+                    <div class="content-preview">
+                        <div class="content-text">
+                            "Harassment complaint against user for repeated threats..."
+                        </div>
+                        <div class="toxicity-score">
+                            <span class="toxicity-label">Toxicity Score:</span>
+                            <div class="toxicity-bar">
+                                <div class="toxicity-fill" style="width: 92%"></div>
+                                <span class="toxicity-text">92%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-actions">
+                        <button class="btn btn-danger">
+                            <i data-lucide="ban"></i>
+                            Block Post
+                        </button>
+                        <button class="btn btn-warning">
+                            <i data-lucide="pause"></i>
+                            Suspend User
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i data-lucide="eye"></i>
+                            Add to Watchlist
+                        </button>
+                        <button class="btn btn-primary">
+                            <i data-lucide="send"></i>
+                            Forward to Platform
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Spam Control Tab -->
+        <div id="spam-control" class="tab-content">
+            <div class="page-header">
+                <h1>Spam Control</h1>
+                <p>AI-flagged spam detection and management</p>
+            </div>
+
+            <div class="spam-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i data-lucide="bot"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Bot Accounts Detected</h3>
+                        <div class="stat-number">42</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i data-lucide="copy"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Duplicate Comments</h3>
+                        <div class="stat-number">128</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="spam-table-section">
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Report ID</th>
+                                <th>Type</th>
+                                <th>Content Preview</th>
+                                <th>Confidence</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>SP-001</td>
+                                <td><span class="badge type-bot">Bot Activity</span></td>
+                                <td>Repeated promotional messages...</td>
+                                <td>96%</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-danger">
+                                            <i data-lucide="trash-2"></i>
+                                            Delete
+                                        </button>
+                                        <button class="btn btn-warning">
+                                            <i data-lucide="clock"></i>
+                                            Rate Limit
+                                        </button>
+                                        <button class="btn btn-secondary">
+                                            <i data-lucide="flag"></i>
+                                            Flag Account
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analytics Tab -->
+        <div id="analytics" class="tab-content">
+            <div class="page-header">
+                <h1>Analytics & Reporting</h1>
+                <p>Comprehensive insights and data visualization</p>
+            </div>
+
+            <div class="analytics-grid">
+                <div class="chart-card">
+                    <div class="card-header">
+                        <h3>Complaints Trend</h3>
+                    </div>
+                    <div class="card-content">
+                        <canvas id="trendChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="chart-card">
+                    <div class="card-header">
+                        <h3>Complaint Types Distribution</h3>
+                    </div>
+                    <div class="card-content">
+                        <canvas id="typeChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="map-card">
+                    <div class="card-header">
+                        <h3>Geographic Distribution</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="map-placeholder">
+                            <i data-lucide="map"></i>
+                            <p>India Heatmap</p>
+                            <p>Interactive map showing fake news distribution across states</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="impact-card">
+                    <div class="card-header">
+                        <h3>Impact Score</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="impact-score">
+                            <div class="score-circle high">
+                                <span class="score-number">78</span>
+                                <span class="score-label">High Risk</span>
+                            </div>
+                            <p>Dangerous fake news impact assessment</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="export-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Export Reports</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="export-options">
+                            <button class="btn btn-primary">
+                                <i data-lucide="file-text"></i>
+                                Export PDF
+                            </button>
+                            <button class="btn btn-secondary">
+                                <i data-lucide="download"></i>
+                                Export CSV
+                            </button>
+                            <button class="btn btn-secondary">
+                                <i data-lucide="file-spreadsheet"></i>
+                                Export Excel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Case History Tab -->
+        <div id="case-history" class="tab-content">
+            <div class="page-header">
+                <h1>Case History Archive</h1>
+                <p>Historical records and case management</p>
+            </div>
+
+            <div class="history-filters">
+                <div class="filters-grid">
+                    <div class="filter-group">
+                        <label for="dateFrom">Date From</label>
+                        <input type="date" id="dateFrom" class="filter-input">
+                    </div>
+                    <div class="filter-group">
+                        <label for="dateTo">Date To</label>
+                        <input type="date" id="dateTo" class="filter-input">
+                    </div>
+                    <div class="filter-group">
+                        <label for="caseType">Case Type</label>
+                        <select id="caseType" class="filter-select">
+                            <option value="">All Types</option>
+                            <option value="fake-news">Fake News</option>
+                            <option value="cyberbullying">Cyberbullying</option>
+                            <option value="spam">Spam</option>
+                            <option value="harassment">Harassment</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary">
+                        <i data-lucide="search"></i>
+                        Search
+                    </button>
+                </div>
+            </div>
+
+            <div class="history-table">
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Case ID</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Date Closed</th>
+                                <th>Resolution</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>CC-2024-CLOSED-001</td>
+                                <td><span class="badge type-fake-news">Fake News</span></td>
+                                <td><span class="badge status-resolved">Resolved</span></td>
+                                <td>2024-08-25</td>
+                                <td>Content removed, user warned</td>
+                                <td>
+                                    <button class="btn-icon btn-view" title="View Case Details">
+                                        <i data-lucide="eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Tab -->
+        <div id="settings" class="tab-content">
+            <div class="page-header">
+                <h1>Settings</h1>
+                <p>System configuration and preferences</p>
+            </div>
+
+            <div class="settings-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>User Management</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="setting-item">
+                            <label>Default Assignment</label>
+                            <select class="setting-select">
+                                <option>Auto-assign by workload</option>
+                                <option>Manual assignment</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <label>Notification Preferences</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    Email notifications
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    SMS alerts for urgent cases
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>System Configuration</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="setting-item">
+                            <label>AI Detection Threshold</label>
+                            <input type="range" min="0" max="100" value="75" class="setting-range">
+                            <span>75%</span>
+                        </div>
+                        <div class="setting-item">
+                            <label>Auto-escalation Time</label>
+                            <select class="setting-select">
+                                <option>24 hours</option>
+                                <option>48 hours</option>
+                                <option>72 hours</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="settings-actions">
+                <button class="btn btn-primary" onclick="saveSettings()">
+                    <i data-lucide="save"></i>
+                    Save Settings
+                </button>
+                <button class="btn btn-secondary" onclick="resetSettings()">
+                    <i data-lucide="refresh-cw"></i>
+                    Reset to Defaults
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Complaint Detail Modal -->
+    <div id="complaintModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Complaint Details</h3>
+                <button class="modal-close" onclick="closeModal()">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="complaint-details">
+                    <div class="detail-section">
+                        <h4>Reporter Information</h4>
+                        <div class="detail-grid">
+                            <div class="detail-item">
+                                <label>Reporter ID:</label>
+                                <span id="reporterId">REP-456789</span>
+                            </div>
+                            <div class="detail-item">
+                                <label>Name:</label>
+                                <span id="reporterName">Rahul Sharma</span>
+                            </div>
+                            <div class="detail-item">
+                                <label>Contact:</label>
+                                <span id="reporterContact">+91-9876543210</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h4>Complaint Details</h4>
+                        <div class="detail-item">
+                            <label>Type:</label>
+                            <span id="complaintType">Fake News</span>
+                        </div>
+                        <div class="detail-item">
+                            <label>Description:</label>
+                            <p id="complaintDescription">False information being spread about government policies on social media platforms.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h4>Evidence</h4>
+                        <div class="evidence-list">
+                            <div class="evidence-item">
+                                <i data-lucide="link"></i>
+                                <span>Screenshot: fake_post_evidence.jpg</span>
+                                <button class="btn-icon">
+                                    <i data-lucide="download"></i>
+                                </button>
+                            </div>
+                            <div class="evidence-item">
+                                <i data-lucide="globe"></i>
+                                <span>URL: https://example.com/fake-article</span>
+                                <button class="btn-icon">
+                                    <i data-lucide="external-link"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h4>AI Analysis</h4>
+                        <div class="ai-results">
+                            <div class="credibility-mini">
+                                <span>Credibility Score: </span>
+                                <strong class="score-low">25%</strong>
+                            </div>
+                            <div class="ai-verdict fake">
+                                <i data-lucide="x-circle"></i>
+                                Likely Fake
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h4>Action Log</h4>
+                        <div class="action-log">
+                            <div class="log-item">
+                                <div class="log-time">2024-08-30 14:30</div>
+                                <div class="log-action">Complaint received and assigned to Officer Singh</div>
+                            </div>
+                            <div class="log-item">
+                                <div class="log-time">2024-08-30 15:15</div>
+                                <div class="log-action">AI analysis completed - flagged as fake</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success">
+                    <i data-lucide="check"></i>
+                    Mark Verified
+                </button>
+                <button class="btn btn-danger">
+                    <i data-lucide="x"></i>
+                    Mark Fake
+                </button>
+                <button class="btn btn-warning">
+                    <i data-lucide="alert-triangle"></i>
+                    Escalate
+                </button>
+                <button class="btn btn-secondary" onclick="closeModal()">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Government Cybercrime Department</h4>
+                <p>Contact: cybercrime@gov.in | Helpline: 1930</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Policies</a>
+                <a href="#">Help</a>
+            </div>
+            <div class="security-notice">
+                <i data-lucide="shield-check"></i>
+                <span>All actions are logged & monitored for security purposes</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="admin.js"></script>
+</body>
+</html>

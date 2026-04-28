@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quick Test</title>
+</head>
+<body>
+    <h1>Testing if JavaScript loads correctly</h1>
+    <script src="admin.js"></script>
+    <script src="data.js"></script>
+    <script>
+        console.log('JavaScript files loaded successfully');
+        if (typeof complaintsData !== 'undefined') {
+            console.log('Data loaded: ' + complaintsData.length + ' complaints');
+        }
+        if (typeof initializeDashboard !== 'undefined') {
+            console.log('Admin functions loaded successfully');
+        }
+    </script>
+</body>
+</html>

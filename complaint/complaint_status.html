@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Status - Government Cybercrime Portal</title>
+    <link rel="stylesheet" href="complaint_status.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h2>Cybercrime Portal</h2>
+                        <span>Government of India</span>
+                    </div>
+                </div>
+                <nav class="nav-menu">
+                    <a href="../public/home.html" class="nav-link">Home</a>
+                    <a href="../report/report.html" class="nav-link">Report a Crime</a>
+                    <a href="../advisories/advisories.html" class="nav-link">Advisories</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="status-container">
+                <div class="status-card">
+                    <div class="form-header">
+                        <h3>Check Complaint Status</h3>
+                        <p>Enter your complaint ID to check the status of your report.</p>
+                    </div>
+
+                    <form id="statusForm" class="form">
+                        <div class="form-group">
+                            <label for="complaintIdInput"><i class="fas fa-hashtag"></i> Complaint ID</label>
+                            <input type="text" id="complaintIdInput" name="complaintId" placeholder="Enter your complaint ID..." required>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-search"></i>
+                            Check Status
+                        </button>
+                    </form>
+
+                    <div id="statusResult" class="status-result" style="display: none;">
+                        <h4 id="statusResultTitle"></h4>
+                        <p id="statusResultDescription"></p>
+                        <div id="statusTimeline" class="timeline"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/dataManager.js"></script>
+    <script src="complaint_status.js"></script>
+</body>
+</html>

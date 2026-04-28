@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Cyber Crime Cell</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="profile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <span class="logo-text">
+                        <strong>Cyber Crime Cell</strong>
+                        <small>Government of India</small>
+                    </span>
+                </div>
+                
+                <nav class="nav-menu" id="navMenu">
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="../report/report.html">Report</a></li>
+                        <li><a href="../complaint/complaint status.html">Complaint Status</a></li>
+                        <li><a href="../advisories/advisories.html">Advisories</a></li>
+                        <li><a href="profile.html" class="active">Profile</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <div class="profile-dropdown">
+                        <button class="profile-btn" id="profileBtn">
+                            <i class="fas fa-user-circle"></i>
+                            <span id="userDisplayName">Loading...</span>
+                        </button>
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <a href="profile.html" class="dropdown-item">
+                                <i class="fas fa-user"></i>
+                                My Profile
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item" onclick="logout()">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="profile-layout">
+                <!-- Profile Sidebar -->
+                <aside class="profile-sidebar">
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <h3 id="profileName">Loading...</h3>
+                        <p id="profileRole">Public User</p>
+                        <div class="profile-stats">
+                            <div class="stat-item">
+                                <span class="stat-number" id="complaintCount">0</span>
+                                <span class="stat-label">Complaints Filed</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" id="resolvedCount">0</span>
+                                <span class="stat-label">Resolved</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="profile-nav">
+                        <ul>
+                            <li><a href="#" class="nav-item active" data-section="personal-info">
+                                <i class="fas fa-user"></i>
+                                Personal Information
+                            </a></li>
+                            <li><a href="#" class="nav-item" data-section="security">
+                                <i class="fas fa-lock"></i>
+                                Security Settings
+                            </a></li>
+                            <li><a href="#" class="nav-item" data-section="notifications">
+                                <i class="fas fa-bell"></i>
+                                Notifications
+                            </a></li>
+                            <li><a href="#" class="nav-item" data-section="sessions">
+                                <i class="fas fa-devices"></i>
+                                Active Sessions
+                            </a></li>
+                            <li><a href="#" class="nav-item" data-section="my-complaints">
+                                <i class="fas fa-file-alt"></i>
+                                My Complaints
+                            </a></li>
+                        </ul>
+                    </nav>
+                </aside>
+
+                <!-- Profile Content -->
+                <div class="profile-content">
+                    <!-- Personal Information Section -->
+                    <section id="personal-info" class="profile-section active">
+                        <div class="section-header">
+                            <h2>Personal Information</h2>
+                            <button class="btn btn-primary" id="editProfileBtn">
+                                <i class="fas fa-edit"></i>
+                                Edit Profile
+                            </button>
+                        </div>
+
+                        <div class="profile-form-container">
+                            <form id="profileForm" class="profile-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="fullname">Full Name</label>
+                                        <input type="text" id="fullname" name="fullname" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="username">Username</label>
+                                        <input type="text" id="username" name="username" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="email">Email Address</label>
+                                        <input type="email" id="email" name="email" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">Phone Number</label>
+                                        <input type="tel" id="phone" name="phone" readonly placeholder="Not provided">
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="joinDate">Member Since</label>
+                                        <input type="text" id="joinDate" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="status">Account Status</label>
+                                        <input type="text" id="status" readonly value="Active">
+                                    </div>
+                                </div>
+
+                                <div class="form-actions" id="formActions" style="display: none;">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-save"></i>
+                                        Save Changes
+                                    </button>
+                                    <button type="button" class="btn btn-secondary" id="cancelEditBtn">
+                                        <i class="fas fa-times"></i>
+                                        Cancel
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+
+                    <!-- Security Settings Section -->
+                    <section id="security" class="profile-section">
+                        <div class="section-header">
+                            <h2>Security Settings</h2>
+                        </div>
+
+                        <div class="security-content">
+                            <div class="security-card">
+                                <div class="security-item">
+                                    <div class="security-info">
+                                        <h4>Password</h4>
+                                        <p>Last changed: <span id="lastPasswordChange">Never</span></p>
+                                    </div>
+                                    <button class="btn btn-outline" id="changePasswordBtn">
+                                        <i class="fas fa-key"></i>
+                                        Change Password
+                                    </button>
+                                </div>
+
+                                <div class="security-item">
+                                    <div class="security-info">
+                                        <h4>Two-Factor Authentication</h4>
+                                        <p>Add an extra layer of security to your account</p>
+                                    </div>
+                                    <button class="btn btn-outline" disabled>
+                                        <i class="fas fa-mobile-alt"></i>
+                                        Coming Soon
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Change Password Form -->
+                            <div id="changePasswordForm" class="change-password-form" style="display: none;">
+                                <form id="passwordForm">
+                                    <div class="form-group">
+                                        <label for="currentPassword">Current Password</label>
+                                        <input type="password" id="currentPassword" name="currentPassword" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="newPassword">New Password</label>
+                                        <input type="password" id="newPassword" name="newPassword" required>
+                                        <div class="password-strength" id="newPasswordStrength"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="confirmPassword">Confirm New Password</label>
+                                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="fas fa-save"></i>
+                                            Update Password
+                                        </button>
+                                        <button type="button" class="btn btn-secondary" id="cancelPasswordBtn">
+                                            <i class="fas fa-times"></i>
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Notifications Section -->
+                    <section id="notifications" class="profile-section">
+                        <div class="section-header">
+                            <h2>Notification Preferences</h2>
+                        </div>
+
+                        <div class="notifications-content">
+                            <div class="notification-settings">
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <h4>Email Notifications</h4>
+                                        <p>Receive updates about your complaints via email</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="emailNotifications" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <h4>Advisory Alerts</h4>
+                                        <p>Get notified about new government advisories</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="advisoryAlerts" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <h4>Status Updates</h4>
+                                        <p>Notifications when complaint status changes</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="statusUpdates" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Active Sessions Section -->
+                    <section id="sessions" class="profile-section">
+                        <div class="section-header">
+                            <h2>Active Sessions</h2>
+                            <p>Manage your active login sessions across devices</p>
+                        </div>
+
+                        <div class="sessions-content">
+                            <div class="session-list" id="sessionsList">
+                                <!-- Sessions will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- My Complaints Section -->
+                    <section id="my-complaints" class="profile-section">
+                        <div class="section-header">
+                            <h2>My Complaints</h2>
+                            <a href="../report/report.html" class="btn btn-primary">
+                                <i class="fas fa-plus"></i>
+                                File New Complaint
+                            </a>
+                        </div>
+
+                        <div class="complaints-content">
+                            <div class="complaints-list" id="myComplaintsList">
+                                <!-- Complaints will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Government Contact Info</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>Cybercrime Helpline: <strong>1930</strong></span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email: <strong>cybercrime@gov.in</strong></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Government of India - Ministry of Home Affairs. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/dataManager.js"></script>
+    <script src="profile.js"></script>
+</body>
+</html>

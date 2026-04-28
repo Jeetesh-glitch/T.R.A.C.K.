@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Status Checker - Cyber Crime Cell</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="complaint status.css">
+</head>
+<body>
+    <!-- Header Navigation -->
+   <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <span class="logo-text">
+                        <strong>Cyber Crime Cell</strong>
+                        <small>Police Department</small>
+                    </span>
+                </div>
+                
+                <nav class="nav-menu" id="navMenu">
+                    <ul>
+                        <li><a href="../public/home.html">Home</a></li>
+                        <li><a href="../report/report.html">Report</a></li>
+                         <li><a href="complaint status.html">Complaint Status</a></li>
+                        <li><a href="../advisories/advisories.html">Advisories</a></li>
+                       
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <div class="profile-dropdown">
+                        <button class="profile-btn" id="profileBtn">
+                            <i class="fas fa-user-circle"></i>
+                        </button>
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-users"></i>
+                                Public Access
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-user-shield"></i>
+                                Admin Login
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-cog"></i>
+                                Settings
+                            </a>
+                        </div>
+                    </div>
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-icon">
+                    <i class="fas fa-search" style="font-size: 3rem; color: #0066cc; margin-bottom: 1rem;"></i>
+                </div>
+                <h1 class="hero-title">Track Your Complaint Status</h1>
+                <p class="hero-subtitle">Enter your complaint ID to know the current status and updates from the concerned authority.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Status Search Form -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-card">
+                <form id="statusForm" class="status-form">
+                    <div class="form-group">
+                        <label for="complaintId">Complaint ID / Reference Number *</label>
+                        <input 
+                            type="text" 
+                            id="complaintId" 
+                            name="complaintId" 
+                            placeholder="Enter your complaint ID (e.g., CC2024001234)"
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">Registered Email / Phone (Optional)</label>
+                        <input 
+                            type="text" 
+                            id="contact" 
+                            name="contact" 
+                            placeholder="Enter your registered email or phone number"
+                        >
+                    </div>
+                    <button type="submit" class="check-status-btn">
+                        <i class="fas fa-search"></i>
+                        Check Status
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Status Result Section (Hidden by default) -->
+    <section class="result-section" id="resultSection" style="display: none;">
+        <div class="container">
+            <div class="status-card">
+                <div class="status-header">
+                    <h2>Complaint Details</h2>
+                    <div class="status-badge" id="statusBadge">
+                        <span id="statusText">Pending</span>
+                    </div>
+                </div>
+                
+                <div class="complaint-details">
+                    <div class="detail-item">
+                        <i class="fas fa-file-alt"></i>
+                        <div class="detail-content">
+                            <label>Complaint Subject</label>
+                            <span id="complaintSubject">Online Fraud - Unauthorized Transaction</span>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <i class="fas fa-id-card"></i>
+                        <div class="detail-content">
+                            <label>Complaint ID</label>
+                            <span id="complaintIdDisplay">CC2024001234</span>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <i class="fas fa-calendar"></i>
+                        <div class="detail-content">
+                            <label>Date Submitted</label>
+                            <span id="dateSubmitted">March 15, 2024</span>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <i class="fas fa-building"></i>
+                        <div class="detail-content">
+                            <label>Assigned Authority</label>
+                            <span id="assignedAuthority">Cyber Crime Investigation Unit - Mumbai</span>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <i class="fas fa-clipboard-list"></i>
+                        <div class="detail-content">
+                            <label>Latest Update</label>
+                            <span id="latestUpdate">Investigation in progress. Documents under review by the investigating officer.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Tracker -->
+                <div class="progress-tracker">
+                    <h3>Progress Timeline</h3>
+                    <div class="timeline">
+                        <div class="timeline-item completed" id="step1">
+                            <div class="timeline-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h4>Submitted</h4>
+                                <p>Complaint received and registered</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item completed" id="step2">
+                            <div class="timeline-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h4>Under Review</h4>
+                                <p>Initial assessment and verification</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item active" id="step3">
+                            <div class="timeline-icon">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h4>Assigned</h4>
+                                <p>Case assigned to investigating officer</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" id="step4">
+                            <div class="timeline-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h4>Resolved</h4>
+                                <p>Complaint resolved and closed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <h3>Quick Actions</h3>
+                <div class="action-buttons">
+                    <button class="action-btn primary">
+                        <i class="fas fa-download"></i>
+                        Download Acknowledgement
+                    </button>
+                    <button class="action-btn secondary" id="subscribeBtn">
+                        <i class="fas fa-bell"></i>
+                        <span id="subscribeText">Subscribe for Updates</span>
+                    </button>
+                    <button class="action-btn tertiary">
+                        <i class="fas fa-edit"></i>
+                        Submit Additional Info
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Didn't get your Complaint ID?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Your complaint ID is sent to your registered email/phone immediately after filing. Check your email spam folder or SMS. If still not found, contact our helpline at 1930 with your registration details.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>How long does resolution take?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Resolution time varies based on complaint complexity:</p>
+                        <ul>
+                            <li><strong>Simple cases:</strong> 7-15 days</li>
+                            <li><strong>Financial fraud:</strong> 15-30 days</li>
+                            <li><strong>Complex cybercrime:</strong> 30-60 days</li>
+                        </ul>
+                        <p>You'll receive regular updates throughout the process.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Who handles my complaint?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Complaints are assigned to specialized units based on the type of cybercrime:</p>
+                        <ul>
+                            <li><strong>Financial Fraud:</strong> Economic Offences Wing</li>
+                            <li><strong>Identity Theft:</strong> Cyber Investigation Unit</li>
+                            <li><strong>Online Harassment:</strong> Women & Child Safety Division</li>
+                            <li><strong>Data Breach:</strong> Technical Investigation Team</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Can I update my complaint after filing?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you can submit additional information using the "Submit Additional Info" button after checking your status. You can also call our helpline for urgent updates.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/%3E%3C/svg%3E" alt="Logo">
+                        <div>
+                            <h4>Cyber Crime Cell</h4>
+                            <p>Government of India</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Information</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> Helpline: 1930 (24x7)</p>
+                        <p><i class="fas fa-envelope"></i> Email: complaints@cybercrime.gov.in</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Ministry of Home Affairs, New Delhi</p>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="quick-links">
+                        <li><a href="#">File New Complaint</a></li>
+                        <li><a href="#">Safety Guidelines</a></li>
+                        <li><a href="#">Download Forms</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-divider"></div>
+                <p>&copy; 2024 Government of India. All rights reserved. | Last updated: March 2024</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Checking complaint status...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Crime Cell - Fight Against Fake News & Online Exploitation</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    <meta name="theme-color" content="#1e3a8a">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <span class="logo-text">
+                        <strong>Cyber Crime Cell</strong>
+                        <small>Government of India</small>
+                    </span>
+                </div>
+                
+                <nav class="nav-menu" id="navMenu">
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="../report/report.html">Report</a></li>
+                        <li><a href="../complaint/complaint status.html">Complaint Status</a></li>
+                        <li><a href="../advisories/advisories.html">Advisories</a></li>
+                        <li><a href="profile.html" id="profileLink" style="display: none;">Profile</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <div class="profile-dropdown">
+                        <button class="profile-btn" id="profileBtn">
+                            <i class="fas fa-user-circle"></i>
+                        </button>
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <a href="profile.html" class="dropdown-item" id="profileMenuItem" style="display: none;">
+                                <i class="fas fa-user"></i>
+                                My Profile
+                            </a>
+                            <a href="../index.html" class="dropdown-item" id="loginMenuItem">
+                                <i class="fas fa-sign-in-alt"></i>
+                                Login
+                            </a>
+                            <a href="../admin/admin.html" class="dropdown-item" id="adminMenuItem">
+                                <i class="fas fa-user-shield"></i>
+                                Admin Login
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item" id="logoutMenuItem" style="display: none;" onclick="logout()">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Logout
+                            </a>
+                        </div>
+                    </div>
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Together Against Fake News & Online Exploitation</h1>
+                    <p class="hero-subtitle">A platform for citizens and law enforcement to fight misinformation and online harm.</p>
+                    
+                    <div class="hero-actions">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-user"></i>
+                            Report Fake News (Public)
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-user-shield"></i>
+                            Police Login
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alert Section -->
+    <section class="alerts">
+        <div class="container">
+            <div class="alert-banner">
+                <div class="alert-header">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Latest Advisories</h3>
+                </div>
+                <div class="ticker-wrapper">
+                    <div class="ticker-content" id="tickerContent">
+                        <div class="alert-item">
+                            <span class="claim-false">❌ Claim: Free Govt Scholarships via WhatsApp</span>
+                            <span class="fact-true">→ ✅ Fact: Fake, phishing scam</span>
+                        </div>
+                        <div class="alert-item">
+                            <span class="claim-false">❌ Claim: Riot in XYZ city</span>
+                            <span class="fact-true">→ ✅ Fact: False news, verified by police</span>
+                        </div>
+                        <div class="alert-item">
+                            <span class="claim-false">❌ Claim: COVID vaccine causes infertility</span>
+                            <span class="fact-true">→ ✅ Fact: Debunked by health ministry</span>
+                        </div>
+                        <div class="alert-item">
+                            <span class="claim-false">❌ Claim: New tax exemption for online purchases</span>
+                            <span class="fact-true">→ ✅ Fact: Fraudulent scheme to steal data</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Fake News Reporting</h3>
+                    <p>Citizens can submit reports about suspicious content, misinformation, or online fraud they encounter on social media platforms.</p>
+                    <a href="#" class="service-link">Submit Report <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Fact-Checking</h3>
+                    <p>Police publish verified advisories and fact-checks to counter misinformation and provide accurate information to the public.</p>
+                    <a href="#" class="service-link">View Advisories <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Monitoring & Analytics</h3>
+                    <p>AI-powered dashboards for government officials to track misinformation trends and social media impact analysis.</p>
+                    <a href="#" class="service-link">Access Dashboard <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Helpline & Awareness</h3>
+                    <p>24/7 cyber safety helpline, awareness campaigns, and educational resources to help citizens stay safe online.</p>
+                    <a href="#" class="service-link">Get Help <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">About This Platform</h2>
+                    <div class="about-description">
+                        <p><strong>Why it exists:</strong> In today's digital age, misinformation and fake news can cause significant harm to society, leading to panic, violence, and erosion of trust. This platform serves as a crucial defense mechanism to prevent such harm.</p>
+                        
+                        <p><strong>Management:</strong> This initiative is managed by the Police Cyber Crime Unit in collaboration with the Government IT Cell, ensuring professional oversight and rapid response capabilities.</p>
+                        
+                        <div class="mission-box">
+                            <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                            <p>"To detect, prevent, and counter harmful social media impact for a safer society through collaborative efforts between law enforcement and citizens."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-features">
+                    <div class="feature-item">
+                        <i class="fas fa-eye"></i>
+                        <span>Real-time Monitoring</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-users"></i>
+                        <span>Community Driven</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-bolt"></i>
+                        <span>Rapid Response</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-lock"></i>
+                        <span>Secure Platform</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact/Stats Section -->
+    <section class="impact">
+        <div class="container">
+            <h2 class="section-title">Our Impact So Far</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="stat-number" data-target="10245">0</div>
+                    <div class="stat-label">Fake News Reports Submitted</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-number" data-target="2540">0</div>
+                    <div class="stat-label">Verified Advisories Issued</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div class="stat-number" data-target="1200">0</div>
+                    <div class="stat-label">Cases Handled by Police</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="stat-number" data-target="12">0</div>
+                    <div class="stat-label">Social Media Platforms Monitored</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Government Contact Info</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>Cybercrime Helpline: <strong>1930</strong></span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email: <strong>cybercrime@gov.in</strong></span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Ministry of Home Affairs, New Delhi</span>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#report">Report</a></li>
+                        <li><a href="#advisories">Advisories</a></li>
+                        <li><a href="#awareness">Awareness</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Follow Official Channels</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                            <span>Twitter</span>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-youtube"></i>
+                            <span>YouTube</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Government of India - Ministry of Home Affairs. All rights reserved.</p>
+                <p class="disclaimer">This is an official government portal. Report suspicious activities immediately.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/dataManager.js"></script>
+    <script src="home.js"></script>
+</body>
+</html>
